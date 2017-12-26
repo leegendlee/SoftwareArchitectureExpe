@@ -4,14 +4,13 @@ import water.ustc.initiator.ORManager;
 import java.sql.SQLException;
 
 /**
- * Created by leegend on 2017/12/5.
+ * Created by leegend on 2017/12/26.
  */
-public class UserDAO extends BaseDAO {
+public class StatusAccessControlDAO extends BaseDAO {
     @Override
     public Object query(int id) throws SQLException {
-        //可以改善此繁琐的写法，使用注入
         super.openDBConnection();
-        Object obj = ORManager.getObject(this.getStatement(), "UserBean", id);
+        Object obj = ORManager.getObject(this.getStatement(), "StatusBean", id);
         super.closeDBConnection();
         return obj;
     }
@@ -19,7 +18,7 @@ public class UserDAO extends BaseDAO {
     @Override
     public boolean insert(Object obj) throws SQLException {
         super.openDBConnection();
-        boolean insert = ORManager.insertObject(this.getStatement(), "UserBean", obj);
+        Boolean insert = ORManager.insertObject(this.getStatement(), "StatusBean", obj);
         super.closeDBConnection();
         return insert;
     }
@@ -27,7 +26,7 @@ public class UserDAO extends BaseDAO {
     @Override
     public boolean update(Object obj) throws SQLException {
         super.openDBConnection();
-        boolean update = ORManager.updateObject(this.getStatement(), "UserBean", obj);
+        Boolean update = ORManager.updateObject(this.getStatement(), "StatusBean", obj);
         super.closeDBConnection();
         return update;
     }
@@ -35,7 +34,7 @@ public class UserDAO extends BaseDAO {
     @Override
     public boolean delete(Object obj) throws SQLException {
         super.openDBConnection();
-        boolean delete = ORManager.deleteObject(this.getStatement(), "UserBean", obj);
+        Boolean delete = ORManager.deleteObject(this.getStatement(), "StatusBean", obj);
         super.closeDBConnection();
         return delete;
     }

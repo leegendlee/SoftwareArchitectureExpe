@@ -27,7 +27,10 @@ import java.util.regex.Pattern;
  * Created by leegend on 2017/12/11.
  */
 public class BaseAction {
-    public String newAction(Element action, HttpServletRequest req, HttpServletResponse res) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException, DocumentException, TransformerException, IOException, ServletException, InvocationTargetException, IntrospectionException {
+    public final static String SUCCESS = "success";
+    public final static String FAILLURE = "failure";
+
+    public final String newAction(Element action, HttpServletRequest req, HttpServletResponse res) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException, DocumentException, TransformerException, IOException, ServletException, InvocationTargetException, IntrospectionException {
         Class targetActionClass = Class.forName(action.attributeValue("class"));
         Method targetActionMethod = targetActionClass.getMethod(action.attributeValue("method"), HttpServletRequest.class);
         Object targetActionObj = targetActionClass.newInstance();

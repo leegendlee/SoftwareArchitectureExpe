@@ -116,7 +116,7 @@ public class SimpleController extends HttpServlet {
     }
 
     private String calcActionName(String uri) {
-        if (!Pattern.matches(".*\\.sc.*", uri)) {
+        if (!Pattern.matches(".*\\.sae.*", uri)) {
             return "";
         }
 

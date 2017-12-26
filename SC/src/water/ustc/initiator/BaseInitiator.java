@@ -4,6 +4,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +19,9 @@ public class BaseInitiator extends HttpServlet implements ServletContextListener
     private static Element CONTROLLER_XML_ROOT;
     private static Element OR_MAPPING_XML_ROOT;
     private static Element DI_XML_ROOT;
+
+    private static String SERVER_NAME = "192.168.0.1";
+    private static String SERVER_PORT = "2012";
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
@@ -91,5 +95,13 @@ public class BaseInitiator extends HttpServlet implements ServletContextListener
 
     public static Element getDiXmlRoot() {
         return DI_XML_ROOT;
+    }
+
+    public static String getSocketServerName() {
+        return SERVER_NAME;
+    }
+
+    public static String getSocketServerPort() {
+        return SERVER_PORT;
     }
 }

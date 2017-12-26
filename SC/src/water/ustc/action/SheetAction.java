@@ -5,12 +5,13 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by leegend on 2017/12/26.
  */
-public class SheetAction {
-    public void sheetPrintInExcel(HttpServletRequest req) {
+public class SheetAction extends BaseAction {
+    public String sheetPrintInExcel(HttpServletRequest req) {
+        return FAILLURE;
 
     }
 
-    public void sheetPrintInPDF(HttpServletRequest req) {
-
+    public String sheetPrintInPDF(HttpServletRequest req) {
+        return FAILLURE;
     }
 }

@@ -2,15 +2,40 @@
     <interceptor name="log" class="water.ustc.interceptor.LogInterceptor" predo="preAction"
                  afterdo="afterAction"></interceptor>
     <controller>
-        <action name="login" class="water.ustc.action.LoginAction" method="login">
+        <!--命令接收+发送-->
+        <action name="command_receive" class="water.ustc.action.CommandAction" method="receiveCommandFromClient">
             <interceptor-ref name="log"></interceptor-ref>
-
-            <result name="success" type="forward" value="pages/success_view.xml"></result>
-            <result name="failure" type="redirect" value=""></result>
+            <result name="success" type="forward" value=""></result>
         </action>
-        <action name="register" class="water.ustc.action.RegisterAction" method="register">
-            <interceptor-ref name="log"></interceptor-ref>
 
+        <!--状态查询+接收+发送（包括门禁）-->
+        <action name="status_data_get" class="water.ustc.action.StatusAction" method="getStatusData">
+            <result name="success" type="forward" value=""></result>
+        </action>
+        <action name="status_data_receive" class="water.ustc.action.StatusAction" method="receiveStatusData">
+            <interceptor-ref name="log"></interceptor-ref>
+            <result name="success" type="forward" value=""></result>
+        </action>
+
+        <!--打印报表Excel+PDF-->
+        <action name="sheet_print_excel" class="water.ustc.action.SheetAction" method="sheetPrintInExcel">
+            <result name="success" type="forward" value=""></result>
+        </action>
+        <action name="sheet_print_pdf" class="water.ustc.action.SheetAction" method="sheetPrintInPDF">
+            <result name="success" type="forward" value=""></result>
+        </action>
+
+        <!--心跳接收+发送-->
+        <action name="heartbeat_receive" class="water.ustc.action.HeartBeatAction" method="receiveHeartbeat">
+            <interceptor-ref name="log"></interceptor-ref>
+            <result name="success" type="forward" value=""></result>
+        </action>
+
+        <!--远程控制IP+同步信息更新(WebSocket)-->
+        <action name="ip_set" class="water.ustc.action.RemoteControlAction" method="setIPAddress">
+            <result name="success" type="forward" value=""></result>
+        </action>
+        <action name="refresh_frequency_set" class="water.ustc.action.RemoteControlAction" method="setRefreshFrequency">
             <result name="success" type="forward" value=""></result>
         </action>
     </controller>
