@@ -25,7 +25,7 @@ public class BaseFilter implements Filter {
 
         if (Objects.equals(uri, "/")) {
             req.getRequestDispatcher("index.jsp").forward(req, res);
-        } else if (!Pattern.matches(".*\\.sc.*", uri)) {
+        } else if (!Pattern.matches(".*\\.sae.*", uri)) {
             res.setStatus(404);
             PrintWriter writer = res.getWriter();
             writer.write("<html><body>" +
