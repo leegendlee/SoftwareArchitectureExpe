@@ -12,23 +12,23 @@ import java.net.Socket;
 /**
  * Created by leegend on 2017/12/26.
  */
-public class CommandAction extends BaseAction {
+public class OrderAction extends BaseAction {
     public String receiveCommandFromClient(HttpServletRequest req) {
-        String command = req.getParameter("command");
+        String command = req.getParameter("order");
         if (command != null && !command.isEmpty()) {
             this.postCommandToServer(command);
 
             return SUCCESS;
         }
 
-        return FAILLURE;
+        return FAILURE;
     }
 
     private void postCommandToServer(String command) {
         try {
             Socket client = new Socket(BaseInitiator.getSocketServerName(), Integer.parseInt(BaseInitiator.getSocketServerPort()));
             DataOutputStream out = new DataOutputStream((OutputStream) client.getOutputStream());
-            out.writeUTF("command:" + command);
+            out.writeUTF("order:" + command);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,7 +1,6 @@
 package water.ustc.action;
 
 import water.ustc.initiator.BaseInitiator;
-
 import javax.servlet.http.HttpServletRequest;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -22,7 +21,7 @@ public class StatusAction extends BaseAction {
 
         }
 
-        return FAILLURE;
+        return FAILURE;
     }
 
     public String receiveStatusData(HttpServletRequest req) {
@@ -35,7 +34,7 @@ public class StatusAction extends BaseAction {
             return SUCCESS;
         }
 
-        return FAILLURE;
+        return FAILURE;
     }
 
     private void postStatusDataToServer(String statusType, String statusValue) {

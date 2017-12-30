@@ -23,7 +23,7 @@ public class HeartBeatAction extends BaseAction {
             return SUCCESS;
         }
 
-        return FAILLURE;
+        return FAILURE;
     }
 
     private void postHeartbeatToServer(Boolean heartbeat) {

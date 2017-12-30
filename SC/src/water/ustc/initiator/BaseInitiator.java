@@ -20,7 +20,7 @@ public class BaseInitiator extends HttpServlet implements ServletContextListener
     private static Element OR_MAPPING_XML_ROOT;
     private static Element DI_XML_ROOT;
 
-    private static String SERVER_NAME = "192.168.0.1";
+    private static String SERVER_NAME = "0.0.0.0";
     private static String SERVER_PORT = "2012";
 
     @Override

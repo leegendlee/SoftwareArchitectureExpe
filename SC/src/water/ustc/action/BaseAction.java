@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  */
 public class BaseAction {
     public final static String SUCCESS = "success";
-    public final static String FAILLURE = "failure";
+    public final static String FAILURE = "failure";
 
     public final String newAction(Element action, HttpServletRequest req, HttpServletResponse res) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException, DocumentException, TransformerException, IOException, ServletException, InvocationTargetException, IntrospectionException {
         Class targetActionClass = Class.forName(action.attributeValue("class"));
@@ -65,8 +65,8 @@ public class BaseAction {
         //没有找到DI，则进行action的转发
         //action
         String methodResult = (String) targetActionMethod.invoke(targetActionObj, req);
-
         //action result工作
+        boolean resultFound = false;
         for (Iterator k = action.elementIterator("result"); k.hasNext(); ) {
             Element result = (Element) k.next();
             if (Objects.equals(result.attributeValue("name"), methodResult)) {
@@ -94,13 +94,16 @@ public class BaseAction {
                     req.getRequestDispatcher(value).forward(req, res);
                 }
 
+                resultFound = true;
                 break;
-            } else {
-                PrintWriter writer = res.getWriter();
-                writer.write("No Result");
-
-                return null;
             }
+        }
+
+        if (!resultFound) {
+            PrintWriter writer = res.getWriter();
+            writer.write("No Result");
+
+            return null;
         }
 
         return methodResult;

@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class SheetAction extends BaseAction {
     public String sheetPrintInExcel(HttpServletRequest req) {
-        return FAILLURE;
+        return FAILURE;
 
     }
 
     public String sheetPrintInPDF(HttpServletRequest req) {
-        return FAILLURE;
+        return FAILURE;
     }
 }
